@@ -84,3 +84,5 @@ dist
 sw.*
 
 package-lock.json
+.history
+.vscode

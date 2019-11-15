@@ -1,25 +1,30 @@
 <template lang="pug">
-section.container
-  div
-    logo
-    h1.title
-      nuxt-view
-    h2.subtitle {{title}}
+  section.container
+    div
+      Logo(:user="user", ref="helloComponent")
+      h1.title
+        router-view
+      h2.subtitle {{title}}
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Logo from '@/components/Logo.vue'
-export default Vue.extend({
+import { Vue, Component } from 'vue-property-decorator'
+import Logo from '~/components/Logo.vue'
+
+@Component({
   components: {
     Logo
-  },
-  data() {
-    return {
-      title: '123'
-    }
   }
 })
+class App extends Vue {
+  name: string = 'index'
+  title: string = 'test'
+  user: object = {
+    firstName: '1',
+    lastName: 2
+  }
+}
+export default App
 </script>
 
 <style>

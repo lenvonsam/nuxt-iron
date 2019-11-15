@@ -28,12 +28,14 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    "~/assets/stylus/common"
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
+  plugins: [    
+    '~/plugins/mixins'
   ],
 
   /*
@@ -41,7 +43,7 @@ module.exports = {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
+    '@nuxtjs/axios',    
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
     '@nuxtjs/pwa',
@@ -52,7 +54,7 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
-
+  buildModules: ['@nuxt/typescript-build'],
   /*
   ** Build configuration
   */
@@ -65,9 +67,25 @@ module.exports = {
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
-          test: /\.(js|vue)$/,
+          // test: /\.(js|vue)$/,
+          // test: /\.js$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          test: /\.ts$/,
+          exclude: /(node_modules)/,
+          options: {
+            typeCheck: {
+              eslint: true
+            },
+            ignoreNotFoundWarnings: true,
+            loaders: {
+              ts: {
+                silent: true
+              },
+              tsx: {
+                silent: true
+              }
+            }
+          }
         })
       }
     }
