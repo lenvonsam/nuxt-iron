@@ -1,3 +1,3 @@
 export interface loadData { 
-  body: string
+  driverIdcard: string
 }

@@ -7,13 +7,18 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { loadData } from '~/models/logo'
+import { mapState } from 'vuex'
 
 interface User {
   firstName: string
   lastName: number
 }
 
-@Component({})
+@Component({
+  computed: mapState([
+    'driverIdcard'
+  ])
+})
 class Logo extends Vue {
   @Prop({ type: Object, required: true }) readonly user!: User
 
@@ -34,9 +39,13 @@ class Logo extends Vue {
     return (this as any).api.logoApi
   }
 
+  driverIdcard!: string
+
   loadData(): void {
-    const paramsBody: object = {driverIdcard: '320382199003078572'}
-    const params: loadData = {
+    const paramsBody: loadData = {
+      driverIdcard: this.driverIdcard
+    }
+    const params: object = {
       body: JSON.stringify(paramsBody)
     }
     const that = (this as any)
