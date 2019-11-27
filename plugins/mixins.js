@@ -42,10 +42,7 @@ const PROXYDCODEURL = BASICURL + '/common/proxyDecode'
 const minixs = {
   data() {
     return {
-      phoneReg: /^1[345789]\d{9}$/,
-      crmProxy: 'http://192.168.80.200:8080/crmserver/api/v1/',  // crm测试环境
-      urlProxy: 'http://192.168.80.147:8980/',  // ERP测试环境
-      appUrlProxy: 'http://192.168.80.147:8080/',  // 仓储测试环境
+      phoneReg: /^1[345789]\d{9}$/,      
       api: api
     }
   },
@@ -70,7 +67,7 @@ const minixs = {
       const isIE = userAgent.indexOf('compatible') > -1 && userAgent.indexOf('MSIE') > -1 // 判断是否IE<11浏览器
       const isEdge = userAgent.indexOf('Edge') > -1 && !isIE // 判断是否IE的Edge浏览器
       const isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf('rv:11.0') > -1
-      console.log('userAgent', userAgent)
+      // console.log('userAgent', userAgent)
       if (isIE || isEdge || isIE11) {
         // this.$message.error('系统暂不支持ie浏览器，推荐使用chrome进行访问')
         alert('系统暂不支持ie浏览器，推荐使用chrome进行访问')
@@ -88,7 +85,7 @@ const minixs = {
       const basicArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
       const basiCode = ['Z', 'H', '1', '8']
       basiCode.map((itm, idx) => {
-        console.log(itm)
+        // console.log(itm)
         const rdmIdx = Math.floor(Math.random() * 100) % basicArray.length
         basiCode[idx] = basicArray[rdmIdx]
       })
@@ -105,6 +102,15 @@ const minixs = {
     mobileReg(mobile) {
       const reg = /^1[3|4|5|8|9][0-9]\d{4,8}$/
       return reg.test(mobile)
+    },
+    redirect(to) {
+      if (this.$router) this.$router.replace(to)
+    },
+    jump(to) {
+      if (this.$router) this.$router.push(to)
+    },
+    back() {
+      if (this.$router) this.$router.go(-1)
     },
     toStringDate: toStringDate,
     // erp 专用
@@ -158,7 +164,7 @@ const minixs = {
           }
         }).then(resp => {
           if (resp.status === 200) {
-            console.log('resp:>.' , resp)
+            // console.log('resp:>.' , resp)
             resolve(resp.data)
           } else {
             console.log('error')

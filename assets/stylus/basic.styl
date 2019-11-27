@@ -1,34 +1,29 @@
-@charset "utf-8"
-@require "./variable"
-@require "./reset"
-
+@charset 'utf-8'@require './variable'
+@require './reset'
 body, html
   font-family 'PingFang SC', 'Microsoft Yahei', 'SimSun', 'Helvetica', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif, 'Droid Sans Fallback'
   // -webkit-user-select none
   // user-select none
   font-size $fontsize-medium
-  color #262626
-
+  background #f6f6f6
+  color #333
 *
   -webkit-top-highlight-color transparent
   box-sizing border-box !important
-
 .clear-fix
   &::after
-    content ""
+    content ''
     display table
     clear both
-
 // 优化表单
 input, select
   -webkit-appearance none
+  outline medium
   appearance none
 select::-ms-expand, input[type=radio]::-ms-check, input[type=checkbox]::-ms-check, input[type=text]::-ms-clear, input[type=tel]::-ms-clear, input[type=number]::-ms-clear
   display none
-
-
-for num in (0..count)
-  prefix = (num * 5)px
+for num in (0 .. count)
+  prefix = (num * 5) px
   .ml-{prefix}
     margin-left prefix !important
   .mr-{prefix}
@@ -48,11 +43,10 @@ for num in (0..count)
   .p-{prefix}
     padding prefix prefix prefix prefix
   .flex-{prefix}
-    -webkit-box-flex: 0 0 prefix !important
+    -webkit-box-flex 0 0 prefix !important
     -webkit-flex 0 0 prefix !important
     -ms-flex 0 0 prefix !important
-    flex: 0 0 prefix !important
-
+    flex 0 0 prefix !important
 .text-center
   text-align center
 .text-right
@@ -63,7 +57,6 @@ for num in (0..count)
   float right
 .float-left
   float left
-
 .row, .flex
   display -webkit-box
   display -webkit-flex
@@ -76,8 +69,16 @@ for num in (0..count)
     flex 1
 .flex-center
   align-items center
+.flex-end
+  align-items flex-end
+.flex-content-end
+  justify-content flex-end
 .flex-content-center
   justify-content center
+.flex-content-between
+  justify-content space-between
+.flex-content-around
+  justify-content space-around
 .flex-column
   flex-direction column
 .flex-88
@@ -91,10 +92,9 @@ for num in (0..count)
 .flex-420
   flex 0 0 420px !important
 input, textarea
-  border: 0px
-
+  border 0px
 input.placeholder-white::-webkit-input-placeholder
-  color rgba(255, 255, 255, .5) !important
+  color rgba(255, 255, 255, 0.5) !important
 .hide
   display none
 .no-border
@@ -108,7 +108,7 @@ input.placeholder-white::-webkit-input-placeholder
 .border-right-line
   border-right 1px solid $color-border
 .border-left-line
-  border-right 1px solid $color-border
+  border-left 1px solid $color-border
 .border-circle
   border-radius 50%
 .padding
@@ -137,6 +137,8 @@ input.placeholder-white::-webkit-input-placeholder
   font-size $fontsize-large-x
 .ft-20
   font-size $fontsize-large-xx
+.ft-22
+  font-size 22px
 .ft-24
   font-size $fontsize-large-xxx
 .ft-30
@@ -144,93 +146,85 @@ input.placeholder-white::-webkit-input-placeholder
 .ft-bold
   font-weight bold !important
 .full-width
-  width 100%!important
-
-.border-top-1px, .border-right-1px, .border-bottom-1px, .border-left-1px
+  width 100% !important
+.border-top-1, .border-right-1, .border-bottom-1, .border-left-1
   position relative
   &:before, &:after
-    content ""
+    content ''
     display block
     position absolute
     pointer-events none
     transform-origin 0 0
-
-.border-top-1px
+.border-top-1
   &:before
-    border-top 1px solid $color-row-line
+    border-top 1px solid $color-line
     left 0
     top 0
     width 100%
     transform-origin 0 top
-
-.border-right-1px
+.border-right-1
   &:after
-    border-right 1px solid $color-col-line
+    border-right 1px solid $color-line
     top 0
     right 0
     height 100%
     transform-origin right 0
-
-.border-bottom-1px
+.border-bottom-1
   &:after
-    border-bottom 1px solid $color-row-line
+    border-bottom 1px solid $color-line
     left 0
     bottom 0
     width 100%
     transform-origin 0 bottom
-
-.border-left-1px
+.border-left-1
   &:before
-    border-left 1px solid $color-col-line
+    border-left 1px solid $color-line
     top 0
     left 0
     height 100%
     transform-origin left 0
-
 @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2)
-  .border-top-1px
+  .border-top-1
     &:before
-      width: 200%
-      transform: scale(.5) translateZ(0)
-  .border-right-1px
+      width 200%
+      transform scale(0.5) translateZ(0)
+  .border-right-1
     &:after
-      height: 200%
-      transform: scale(.5) translateZ(0)
-  .border-bottom-1px
+      height 200%
+      transform scale(0.5) translateZ(0)
+  .border-bottom-1
     &:after
-      width: 200%
-      transform: scale(.5) translateZ(0)
-  .border-left-1px
+      width 200%
+      transform scale(0.5) translateZ(0)
+  .border-left-1
     &:before
-      height: 200%
-      transform: scale(.5) translateZ(0)
-
+      height 200%
+      transform scale(0.5) translateZ(0)
 @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3)
-  .border-top-1px
+  .border-top-1
     &:before
-      width: 300%
-      transform: scale(.333) translateZ(0)
-  .border-right-1px
+      width 300%
+      transform scale(0.333) translateZ(0)
+  .border-right-1
     &:after
-      height: 300%
-      transform: scale(.333) translateZ(0)
-  .border-bottom-1px
+      height 300%
+      transform scale(0.333) translateZ(0)
+  .border-bottom-1
     &:after
-      width: 300%
-      transform: scale(.333) translateZ(0)
-  .border-left-1px
+      width 300%
+      transform scale(0.333) translateZ(0)
+  .border-left-1
     &:before
-      height: 300%
-      transform: scale(.333) translateZ(0)
-.ellps-row{
-  overflow: hidden
-  text-overflow: ellipsis
-  white-space: nowrap
-}
+      height 300%
+      transform scale(0.333) translateZ(0)
+.ellps-row
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
 .ellps
   overflow hidden
   text-overflow ellipsis
-  display -webkit-box!important
+  display -webkit-box !important
   line-height 18px
   -webkit-line-clamp 1
   // white-space wrap
@@ -250,9 +244,9 @@ input.placeholder-white::-webkit-input-placeholder
 .text-blue
   color $color-blue
 .text-warning
-  color: #E6A23C
+  color #E6A23C
 .text-primary
-  color: $color-main !important
+  color $color-main !important
 .bg-gray
   background $color-background
 .bg-primary
@@ -260,26 +254,27 @@ input.placeholder-white::-webkit-input-placeholder
 .bg-white
   background $color-white !important
 .bg-f9
-  background: #f9f9f9
+  background #f9f9f9
 .bg-success
-  background: $color-green !important
+  background $color-green !important
 .bg-warning
-  background: #E6A23C
+  background #E6A23C
 .bg-danger
-  background: #F56C6C
+  background #dd514c
+.bg-red
+  background #dd514c !important
 .bg-info
-  background: #909399
-[class*="iconfont icon-"],
-[class^=icon-]
-    speak: none;
-    font-style: normal;
-    font-weight: 400;
-    -webkit-font-feature-settings: normal;
-    font-feature-settings: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    vertical-align: baseline;
-    display: inline-block;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  background #909399
+[class*='iconfont icon-'], [class^=icon-]
+  speak none
+  font-style normal
+  font-weight 400
+  -webkit-font-feature-settings normal
+  font-feature-settings normal
+  font-variant normal
+  text-transform none
+  line-height 1
+  vertical-align baseline
+  display inline-block
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale

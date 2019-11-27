@@ -30,6 +30,7 @@ module.exports = {
     'unicorn/prefer-includes': 'off',
     'keyword-spacing': 1,
     'curly': 'off',
-    'unicorn/escape-case': 'off'
+    'unicorn/escape-case': 'off',
+    'no-debugger': 'off'
   }
 }

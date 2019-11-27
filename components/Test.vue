@@ -1,12 +1,15 @@
 <template lang="pug">
   div
-    span {{message}} -- {{nowDate}}
+    span.ft-16 {{nowDate}}
+    .mt-15.mb-10
+      span {{driverData.driverCode}}
+      span.pl-10 {{driverData.driverPhone}}
     b-button.ml-10(@click="btnClick") 测试点击
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { loadData } from '~/models/logo'
+import { loadData } from '~/models/test'
 import { mapState } from 'vuex'
 
 interface User {
@@ -19,16 +22,18 @@ interface User {
     'driverIdcard'
   ])
 })
-class Logo extends Vue {
-  @Prop({ type: Object, required: true }) readonly user!: User
+class Test extends Vue {
+  // @Prop({ type: Object, required: true }) readonly user!: User
+  @Prop() user!: User
 
   message: string = 'This is a message'
   nowDate: string = (this as any).toStringDate(new Date())
-  // apiObj: object = (this as any).api.logoApi
-  constructor() {
-    super()
-    console.log(this)
-  }
+  driverData: object = {}
+  driverIdcard!: string  
+  // constructor() {
+  //   super()
+  //   console.log(this)    
+  // }
   mounted() {
     this.$nextTick(() => {
       this.loadData()
@@ -39,8 +44,6 @@ class Logo extends Vue {
     return (this as any).api.logoApi
   }
 
-  driverIdcard!: string
-
   loadData(): void {
     const paramsBody: loadData = {
       driverIdcard: this.driverIdcard
@@ -49,8 +52,9 @@ class Logo extends Vue {
       body: JSON.stringify(paramsBody)
     }
     const that = (this as any)
-    that.requestDecode(that.urlProxy + (this.apiObj as any).loadData, params, 'post').then((res: any) => {
+    that.requestDecode((this.apiObj as any).loadData, params, 'post').then((res: any) => {
       console.log(res)
+      this.driverData = res
     }).catch((err: any) => {
       console.error(err)
     })
@@ -65,7 +69,7 @@ class Logo extends Vue {
     this.nowDate = (this as any).toStringDate(new Date())
   }
 }
-export default Logo
+export default Test
 </script>
 
 <style>

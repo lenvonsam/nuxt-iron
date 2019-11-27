@@ -1,9 +1,10 @@
 const pkg = require('./package')
 
-
 module.exports = {
   mode: 'universal',
-
+  router: {
+    base: '/'
+  },
   /*
   ** Headers of the page
   */
@@ -15,7 +16,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_651366_chsjhvojtwf.css' }
     ]
   },
 
@@ -28,14 +30,18 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    "~/assets/stylus/common"
+    '~/assets/stylus/common',
+    '~/assets/animate.min'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [    
-    '~/plugins/mixins'
+  plugins: [
+    '~/plugins/mixins',
+    { src: '~/plugins/swiper.js', ssr: false }
+    // { src: "~/plugins/picZoom.js", ssr: false }
+    // { src: "~/plugins/echarts.js", ssr: false }
   ],
 
   /*
@@ -43,10 +49,10 @@ module.exports = {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',    
+    '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
-    '@nuxtjs/pwa',
+    '@nuxtjs/pwa'
   ],
   /*
   ** Axios module configuration
@@ -62,7 +68,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    extend (config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
