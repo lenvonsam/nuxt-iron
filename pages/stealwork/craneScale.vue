@@ -1,17 +1,17 @@
 <template lang="pug">
-.crane-scale
+.crane-scale.animated.slideInLeft
   .crane-scale-bg
     .content.relative-position.text-center
       .crane-scale-card.flex.flex-content-between
-        .card.bg-white.img-shadow
+        .card.bg-white.img-shadow.animated.fadeInDown
           img(src="@/assets/images/dc-icon1.png", width="154px", height="154px")
           .ft-30.pt-10.pb-10.zhd-text-main.ft-bold 快
           .text-666.ft-16.mt-10 上秤计算快
-        .card.bg-white.img-shadow
+        .card.bg-white.img-shadow.animated.fadeInDown
           img(src="@/assets/images/dc-icon2.png", width="154px", height="154px")
           .ft-30.pt-10.pb-10.text-yellow.ft-bold 准
           .text-666.ft-16.mt-10 物资重量准
-        .card.bg-white.img-shadow
+        .card.bg-white.img-shadow.animated.fadeInDown
           img(src="@/assets/images/dc-icon3.png", width="154px", height="154px")
           .ft-30.pt-10.pb-10.text-gray.ft-bold 稳
           .text-666.ft-16.mt-10 数据传输稳

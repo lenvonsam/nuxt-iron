@@ -1,5 +1,5 @@
 <template lang="pug">
-.warehouse
+.warehouse.animated.slideInLeft
   .bg-white.text-center.p-30
     .ft-30 系统间互联互通，操作方便
     .ft-16.text-999.pt-20 根据企业需要直联任何自有或三方仓储系统，与电商平台、ERP系统互联互通，形成了三位一体的系统优势，让仓库操作更加流畅，管理更加方便。
@@ -27,7 +27,11 @@ class Warehouse extends Vue {}
 export default Warehouse
 </script>
 <style lang="stylus" scoped>
-.warehouse
-  transform all 0.5s
-  transform translateX(-1000px)
+
+// .warehouse
+
+//   transform all 0.5s
+
+//   transform translateX(-1000px)
+
 </style>

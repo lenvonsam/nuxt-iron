@@ -16,9 +16,9 @@ b-container.p-0(:fluid="true")
         .icon-img3
         .mt-10 型云吊秤系统
         .animated.slideInLeft.fa-line ——————
-  Crm(v-show="tabActive === 'crm'", :class="{'tab-active': tabActive==='crm'}")
-  Warehouse(v-show="tabActive === 'warehouse'", :class="{'tab-active': tabActive==='warehouse'}")
-  CraneScale(v-show="tabActive === 'craneScale'", :class="{'tab-active': tabActive==='craneScale'}")
+  Crm(v-show="tabActive === 'crm'")
+  Warehouse(v-show="tabActive === 'warehouse'")
+  CraneScale(v-show="tabActive === 'craneScale'")
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
@@ -77,6 +77,4 @@ export default Index
       background url('../../assets/images/fa-3-hover.png') no-repeat center
     .fa-line
       display block
-.tab-active.warehouse
-  transform translateX(0)
 </style>
