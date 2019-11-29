@@ -42,14 +42,6 @@
   margin-top 0px
   border none
   color #333
-.zhd-btn-sm
-  height 30px
-  line-height 30px
-  padding 0 10px
-  font-size 12px
-.zhd-btn-abs
-  width 60px !important
-  padding 0 5px !important
 .table-striped tbody tr:nth-of-type(odd)
   background #ffffff
 .table th, .table td
@@ -85,7 +77,7 @@
   height 38px
   line-height 38px
   padding 0 18px
-  color #fff !important
+  color #fff
   white-space nowrap
   text-align center
   font-size 14px
@@ -97,9 +89,17 @@
   &:hover
     opacity 0.8
     color #fff
-    color none !important
-    background-color none !important
-    border-color none !important
+    color none
+    background-color none
+    border-color none
+.zhd-btn-sm
+  height 30px
+  line-height 30px
+  padding 0 10px
+  font-size 12px
+.zhd-btn-abs
+  width 60px !important
+  padding 0 5px !important
 .zhd-btn-lg
   height 44px
   line-height 44px
@@ -107,6 +107,8 @@
   font-size 16px
 .zhd-btn-warning
   background #f37b1d
+  &:hover
+    background #f37b1d
 .zhd-btn-danger
   background #dd514c
 .zhd-btn-disabled
@@ -138,3 +140,17 @@ input.custom-select
   box-shadow 0 0 0 0
 .zhd-text-main
   color #0289fb !important
+.zhd-btn-warning
+  background #f37b1d
+.zhd-btn-warning-border
+  border 1px #f37b1d solid
+.btn-circle
+  -moz-border-radius 100px
+  -webkit-border-radius 100px
+  border-radius 100px
+.basic-table-selected
+  width 50px
+.basic-table-option
+  width 150px
+.custom-control-label::after, .custom-control-label::before
+  top 5px

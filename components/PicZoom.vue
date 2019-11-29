@@ -366,67 +366,58 @@ class PicZoom extends Vue {
 }
 export default PicZoom
 </script>
-<style lang="scss" scoped>
-.magnifier-box {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-  .edit-wrap {
-    position: absolute;
-    top: 5px;
-    right: 0;
-    z-index: 9999999;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 5px 15px 0 15px;
-    border-radius: 15px;
-    .rotate-left {
-      display: inline-block;
-      cursor: pointer;
-      width: 16px;
-      height: 16px;
-      background: url('../assets/images/rotate.png');
-      background-size: 100% 100%;
-      -moz-transform: scaleX(-1);
-      -webkit-transform: scaleX(-1);
-      -o-transform: scaleX(-1);
-      transform: scaleX(-1);
-      /*IE*/
-      filter: FlipH;
-    }
-    .rotate-right {
-      margin-left: 10px;
-      cursor: pointer;
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      background: url('../assets/images/rotate.png');
-      background-size: 100% 100%;
-    }
-  }
-  img {
-    width: 100%;
-  }
-  .mouse-cover {
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.5);
-    cursor: move;
-  }
-  .mouse-cover-canvas {
-    position: fixed;
-    left: 100%;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-  &.vertical {
-    img {
-      height: 100%;
-      width: auto;
-    }
-  }
-}
+<style lang="stylus" scoped>
+.magnifier-box
+  width 100%
+  height 100%
+  display flex
+  justify-content center
+  align-items center
+  overflow hidden
+  position relative
+  .edit-wrap
+    position absolute
+    top 5px
+    right 0
+    z-index 9999999
+    background rgba(0, 0, 0, 0.4)
+    padding 5px 15px 0 15px
+    border-radius 15px
+    .rotate-left
+      display inline-block
+      cursor pointer
+      width 16px
+      height 16px
+      background url('../assets/images/rotate.png')
+      background-size 100% 100%
+      -moz-transform scaleX(-1)
+      -webkit-transform scaleX(-1)
+      -o-transform scaleX(-1)
+      transform scaleX(-1)
+      /* IE */
+      filter FlipH
+    .rotate-right
+      margin-left 10px
+      cursor pointer
+      display inline-block
+      width 16px
+      height 16px
+      background url('../assets/images/rotate.png')
+      background-size 100% 100%
+  img
+    width 100%
+  .mouse-cover
+    position fixed
+    background-color rgba(0, 0, 0, 0.5)
+    cursor move
+  .mouse-cover-canvas
+    position fixed
+    left 100%
+    top 0
+    width 100%
+    height 100%
+  &.vertical
+    img
+      height 100%
+      width auto
 </style>

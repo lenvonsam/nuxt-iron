@@ -1,15 +1,18 @@
 <template lang="pug">
   .content
-    main-list
+    Search
+    MainList
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import MainList from './MainList.vue'
+import MainList from './mainList.vue'
+import Search from './search.vue'
 
 @Component({
   layout: 'ShopMall',
   components: {
-    MainList
+    MainList,
+    Search
   }
 })
 class Shop extends Vue {}

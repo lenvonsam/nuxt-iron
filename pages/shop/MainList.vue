@@ -34,7 +34,7 @@
             i.iconfont.icon-arrowleft
           button
             i.iconfont.icon-arrowright
-    b-table.main-table(striped, hover, :items="tableValue.item", :fields="tableValue.fields")
+    b-table.ft-13.main-table(striped, hover, :items="tableValue.item", :fields="tableValue.fields")
       template(v-slot:cell(name)="data")
         router-link(to="/shop/detail") {{data.value}}
         //- span {{data.value}}
@@ -45,11 +45,11 @@
       template(v-slot:cell(price)="data")
         b-form-group
           b-form-radio(v-model="data.item.metering" checked value="理计") 理计 {{data.value}}
-          //- b-form-radio(v-model="data.value" value="磅计") 磅计
+          b-form-radio(v-model="data.item.metering" checked value="磅计") 磅计 {{data.value}}
       template.num-input(v-slot:cell(num)="data")
         InputNumber(@add="inputNumberAdd(data)", @reduce="inputNumberReduce(data)", :value="data.value")
       template(v-slot:cell(option)="data")
-        b-button.zhd-btn-sm.zhd-btn-abs(variant="danger")
+        b-button.ft-13.zhd-btn-sm.zhd-btn-abs(variant="danger")
           i.iconfont.icon-cart
           span.pl-5 购买
 </template>
@@ -171,7 +171,8 @@ class MainList extends Vue {
 }
 export default MainList
 </script>
-<style lang="stylus">.main-list
+<style lang="stylus">
+.main-list
   // border 1px #ddd solid
   margin-top 30px
   .main-list-header
@@ -227,7 +228,7 @@ export default MainList
       width 100%
     .zhd-shop-table-thead
       position fixed
-      top 55px
+      top 54px
       width 1198px
       background #f6f6f6
       z-index 5
@@ -293,4 +294,6 @@ export default MainList
       outline medium
       &:hover
         background #eee
+  /deep/.table th, /deep/.table td
+    vertical-align middle
 </style>

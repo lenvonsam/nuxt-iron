@@ -14,7 +14,7 @@ b-container.p-0(:fluid="true")
   Banner(v-if="$route.path === '/home'")
 </template>
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import { mapState } from 'vuex'
 import Banner from './Banner.vue'
 import BannerLogin from './BannerLogin.vue'

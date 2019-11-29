@@ -27,7 +27,7 @@ function generatePickerOpts () {
 
 function serializeformQuery (requestParams) {
   let query = ''
-  for (let param in requestParams) {
+  for (const param in requestParams) {
     if (param !== undefined && param !== '') {
       query += param + '=' + requestParams[param] + '&'
     }
@@ -40,9 +40,9 @@ function serializeformQuery (requestParams) {
 const BASICURL = 'http://192.168.80.102:8686/quasarserver'
 const PROXYDCODEURL = BASICURL + '/common/proxyDecode'
 const minixs = {
-  data() {
+  data () {
     return {
-      phoneReg: /^1[345789]\d{9}$/,      
+      phoneReg: /^1[345789]\d{9}$/,
       api: api
     }
   },
@@ -62,7 +62,7 @@ const minixs = {
     // }
   },
   methods: {
-    isIE() {
+    isIE () {
       const userAgent = navigator.userAgent
       const isIE = userAgent.indexOf('compatible') > -1 && userAgent.indexOf('MSIE') > -1 // 判断是否IE<11浏览器
       const isEdge = userAgent.indexOf('Edge') > -1 && !isIE // 判断是否IE的Edge浏览器
@@ -74,10 +74,10 @@ const minixs = {
         return false
       }
     },
-    jump(to) {
+    jump (to) {
       if (this.$router) this.$router.push(to)
     },
-    back() {
+    back () {
       if (this.$router) this.$router.go(-1)
     },
     getValidateCode () {
@@ -91,32 +91,32 @@ const minixs = {
       })
       return basiCode.join('')
     },
-    chineseReg(val) {
+    chineseReg (val) {
       const reg = /^[\u4e00-\u9fa5]+$/g
       return reg.test(val)
     },
-    faxNumReg(val) {
+    faxNumReg (val) {
       const reg = /^(\d{3,4}-)?\d{7,8}$/
       return reg.test(val)
     },
-    mobileReg(mobile) {
+    mobileReg (mobile) {
       const reg = /^1[3|4|5|8|9][0-9]\d{4,8}$/
       return reg.test(mobile)
     },
-    redirect(to) {
+    redirect (to) {
       if (this.$router) this.$router.replace(to)
     },
-    jump(to) {
+    jump (to) {
       if (this.$router) this.$router.push(to)
     },
-    back() {
+    back () {
       if (this.$router) this.$router.go(-1)
     },
     toStringDate: toStringDate,
     // erp 专用
-    requestDecode (reqUrl, params, type, charset='gbk', outCharset='gbk') {
-      let param = serializeformQuery(params)
-      let reqBody = {
+    requestDecode (reqUrl, params, type, charset = 'gbk', outCharset = 'gbk') {
+      const param = serializeformQuery(params)
+      const reqBody = {
         reqUrl: reqUrl,
         params: param,
         type: type,
@@ -129,7 +129,7 @@ const minixs = {
           url: PROXYDCODEURL,
           params: reqBody,
           paramsSerializer: (params) => {
-            return Qs.stringify(params, {arrayFormat: 'brackets'})
+            return Qs.stringify(params, { arrayFormat: 'brackets' })
           }
         }).then(resp => {
           if (resp.status === 200) {
@@ -146,9 +146,9 @@ const minixs = {
         })
       })
     },
-    request(reqUrl, params, type, mock=false) {
-      let param = serializeformQuery(params)
-      let reqBody = {
+    request (reqUrl, params, type, mock = false) {
+      const param = serializeformQuery(params)
+      const reqBody = {
         reqUrl: reqUrl,
         params: param,
         type: type,
@@ -160,7 +160,7 @@ const minixs = {
           url: mock ? reqUrl : PRINTERURL,
           params: reqBody,
           paramsSerializer: (params) => {
-            return Qs.stringify(params, {arrayFormat: 'brackets'})
+            return Qs.stringify(params, { arrayFormat: 'brackets' })
           }
         }).then(resp => {
           if (resp.status === 200) {
