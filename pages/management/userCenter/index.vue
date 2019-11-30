@@ -21,31 +21,53 @@ div
       b-tab
         template(v-slot:title)
           span 合同付款
-          span (0)
-        ContractPayment
-      b-tab(title="合同待提(0)")
-      b-tab(title="提单确认(0)")
+          span(:class="paymentCount > 0 ? 'text-red' : ''") ({{paymentCount}})
+        ContractPayment(@count="count => { paymentCount = count }")
+      b-tab
+        template(v-slot:title)
+          span 合同待提
+          span(:class="pendingCount > 0 ? 'text-red' : ''") ({{pendingCount}})
+        ContractPending(@count="count => { pendingCount = count }")
+      b-tab
+        template(v-slot:title)
+          span 提单确认
+          span(:class="billCount > 0 ? 'text-red' : ''") ({{billCount}})
+        ConfimBill(@count="count => { billCount = count }")
       b-tab(title="申请发票(0)")
-      b-tab(title="确认收票(0)")
+        template(v-slot:title)
+          span 申请发票
+          span(:class="invoiceCount > 0 ? 'text-red' : ''") ({{invoiceCount}})
+        ApplyInvoice(@count="count => { invoiceCount = count }")
+      b-tab
         template(v-slot:title)
           span 确认收票
-          span.text-red (5)
-        ConfirmReceipt
+          span(:class="receiptCount > 0 ? 'text-red' : ''") ({{receiptCount}})
+        ConfirmReceipt(@count="count => { receiptCount = count }")
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
 import ContractPayment from './contractPayment.vue'
 import ConfirmReceipt from './confirmReceipt.vue'
+import ContractPending from './contractPending.vue'
+import ConfimBill from './confimBill.vue'
+import ApplyInvoice from './applyInvoice.vue'
 
 @Component({
   components: {
     ContractPayment,
-    ConfirmReceipt
+    ConfirmReceipt,
+    ContractPending,
+    ConfimBill,
+    ApplyInvoice
   },
   layout: 'Management'
 })
 class Index extends Vue {
-  tabIndex: number = 4
+  tabIndex: number = 1
+  billCount: number = 0
+  receiptCount: number = 0
+  pendingCount: number = 0
+  invoiceCount: number = 0
 }
 export default Index
 </script>

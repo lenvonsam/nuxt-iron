@@ -2,20 +2,9 @@
 div
   .prompt.text-red
     i.iconfont.icon-tishi
-    span.pl-5 请在合同支付后 5 天内提货，如出现多次延时提货，平台将酌情收取仓储费用！
+    span.pl-5 请联系司机去平台仓库进行提货，平台将为您制作提单！收到确认短信后，请进行提单确认操作！
   .mt-15
     BasicTable.text-center(:options="tableValue", @onRowSelected="rowSelected", ref="basicTable")
-      template(slot="footer")
-        b-form-checkbox(v-model="allSelected", @change="allSelectedEvent")
-          span 全选
-          span.pl-10 已选0支，共0吨
-        .text-right.pr-10.flex.flex-content-end
-          .line-height-20
-            p 合计：
-              span.ft-16.text-red.ft-bold 0
-              span 元
-            .text-999.ft-12 (含吊费：0元)
-          button.ml-10.zhd-btn 批量支付
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
@@ -26,11 +15,13 @@ import BasicTable from '@/components/BasicTable.vue'
     BasicTable
   }
 })
-class ContractPayment extends Vue {
+class ContractPending extends Vue {
   allSelected: boolean = false
   tableValue: any = {
     selectMode: 'multi',
     selectable: true,
+    pagination: true,
+    count: 0,
     fields: [
       { key: 'selected', label: '选项', class: 'basic-table-selected' },
       { key: 'documentNo', label: '商品信息' },
@@ -58,6 +49,6 @@ class ContractPayment extends Vue {
     val ? basicTable.selectAllRows() : basicTable.clearSelected()
   }
 }
-export default ContractPayment
+export default ContractPending
 </script>
 <style lang="stylus" scoped></style>

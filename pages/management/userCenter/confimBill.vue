@@ -8,7 +8,7 @@
         button.ml-10.zhd-btn 批量确认
 </template>
 <script lang='ts'>
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Emit } from 'vue-property-decorator'
 import BasicTable from '@/components/BasicTable.vue'
 
 @Component({
@@ -16,7 +16,7 @@ import BasicTable from '@/components/BasicTable.vue'
     BasicTable
   }
 })
-class ConfirmReceipt extends Vue {
+class ConfimBill extends Vue {
   allSelected: boolean = false
   tableValue: any = {
     selectMode: 'multi',
@@ -86,6 +86,6 @@ class ConfirmReceipt extends Vue {
     val ? basicTable.selectAllRows() : basicTable.clearSelected()
   }
 }
-export default ConfirmReceipt
+export default ConfimBill
 </script>
 <style lang="stylus" scoped></style>

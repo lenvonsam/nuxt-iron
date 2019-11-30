@@ -16,7 +16,7 @@ import BasicTable from '@/components/BasicTable.vue'
     BasicTable
   }
 })
-class ConfirmReceipt extends Vue {
+class ApplyInvoice extends Vue {
   allSelected: boolean = false
   tableValue: any = {
     selectMode: 'multi',
@@ -86,6 +86,6 @@ class ConfirmReceipt extends Vue {
     val ? basicTable.selectAllRows() : basicTable.clearSelected()
   }
 }
-export default ConfirmReceipt
+export default ApplyInvoice
 </script>
 <style lang="stylus" scoped></style>
