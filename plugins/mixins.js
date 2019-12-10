@@ -4,27 +4,6 @@ import axios from 'axios'
 import Qs from 'qs'
 import api from '~/plugins/api'
 
-// function formatNumber (n) {
-//   n = n.toString()
-//   return n[1] ? n : '0' + n
-// }
-
-function generatePickerOpts () {
-  const end = new Date(new Date().getTime() - 3600 * 1000 * 24)
-  const days = [6, 29, 89]
-  const texts = ['最近一周', '最近一个月', '最近三个月']
-  const arr = []
-  texts.map((itm, idx) => {
-    arr.push({
-      text: itm,
-      onClick (picker) {
-        picker.$emit('pick', [new Date(end.getTime() - 3600 * 1000 * 24 * days[idx]), end])
-      }
-    })
-  })
-  return arr
-}
-
 function serializeformQuery (requestParams) {
   let query = ''
   for (const param in requestParams) {
@@ -46,21 +25,8 @@ const minixs = {
       api: api
     }
   },
-  computed: {
-    // datePickerOpts () {
-    //   return {
-    //     shortcuts: generatePickerOpts()
-    //   }
-    // }
-  },
-  watch: {
-    // '$store.state.globalSuccessMsg' (newVal, oldVal) {
-    //   if (newVal !== '') this.msgShow(this, newVal, 'success')
-    // },
-    // '$store.state.globalErrorMsg' (newVal, oldVal) {
-    //   if (newVal !== '') this.msgShow(this, newVal)
-    // }
-  },
+  computed: {},
+  watch: {},
   methods: {
     isIE () {
       const userAgent = navigator.userAgent
@@ -85,7 +51,7 @@ const minixs = {
       const basicArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
       const basiCode = ['Z', 'H', '1', '8']
       basiCode.map((itm, idx) => {
-        // console.log(itm)
+        console.log(itm)
         const rdmIdx = Math.floor(Math.random() * 100) % basicArray.length
         basiCode[idx] = basicArray[rdmIdx]
       })

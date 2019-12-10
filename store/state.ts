@@ -24,16 +24,16 @@ const state = {
     icon: 'icon-wenjian',
     child: [{
       title: '合同管理',
-      path: '/management/contract'
+      path: '/management/contract/contract'
     }, {
       title: '发票管理',
-      path: '/management/invoice'
+      path: '/management/contract/invoice'
     }, {
       title: '合同回收站',
-      path: '/'
+      path: '/management/contract/recycle'
     }, {
       title: '历史单据',
-      path: '/'
+      path: '/management/contract/historical'
     }]
   }, {
     title: '提单管理',

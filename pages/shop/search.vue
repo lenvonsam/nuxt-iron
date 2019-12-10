@@ -21,13 +21,13 @@
     .search-box.flex.p-10
       .flex.flex-center.search-input
         .pr-10 品名
-        InputRemote(:options="options", @input="inputRemoteChange", :value="searchForm.goodsName")
+        z-input-remote(:options="options", @input="inputRemoteChange", :value="searchForm.goodsName")
       .flex.flex-center.search-input
         .pr-10 规格
-        InputRemote(:options="options", @input="inputRemoteChange", :value="searchForm.goodsName")
+        z-input-remote(:options="options", @input="inputRemoteChange", :value="searchForm.goodsName")
       .flex.flex-center.search-input
         .pr-10 材质
-        InputRemote(:options="options", @input="inputRemoteChange", :value="searchForm.goodsName")
+        z-input-remote(:options="options", @input="inputRemoteChange", :value="searchForm.goodsName")
       .flex.flex-center.search-input
         .pr-10 长度
         input.border-eee.pl-5(type="text")
@@ -40,21 +40,19 @@
         input.border-eee.pl-5(type="text")
       .flex.flex-center.search-input
         .pr-10 产地
-        InputRemote(:options="options", @input="inputRemoteChange", :value="searchForm.goodsName")
+        z-input-remote(:options="options", @input="inputRemoteChange", :value="searchForm.goodsName")
       .flex.flex-center.search-input
         .pr-10 仓库
-        InputRemote(:options="options", @input="inputRemoteChange", :value="searchForm.goodsName")
+        z-input-remote(:options="options", @input="inputRemoteChange", :value="searchForm.goodsName")
       button.zhd-btn.search-btn 搜索
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
 import FilterView from './filterView.vue'
-import InputRemote from '@/components/InputRemote.vue'
 
 @Component({
   components: {
-    FilterView,
-    InputRemote
+    FilterView
   }
 })
 class Search extends Vue {

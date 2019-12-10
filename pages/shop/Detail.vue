@@ -29,7 +29,8 @@
       .mt-15.flex.flex-center
         .label 购买支数:
         .input-num-com.ml-10
-          InputNum(:value="saleNum")
+          //- InputNum(:value="saleNum")
+          z-input-num(:value="saleNum")
         span.pl-10 (最多可选0支)
       .mt-15.flex.flex-center
         span 已选择
@@ -95,13 +96,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import PicZoom from '@/components/PicZoom.vue'
-import InputNum from '@/components/InputNum.vue'
 
 @Component({
   layout: 'ShopMall',
   components: {
-    PicZoom,
-    InputNum
+    PicZoom
   }
 })
 class Detail extends Vue {

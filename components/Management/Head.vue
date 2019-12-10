@@ -27,7 +27,7 @@ b-container.p-0.bg-white(:fluid="true")
             .list-child 提现申请
             .list-child 账户收支明细
             .list-child 我的优惠券
-      .flex.flex-center.flex-content-end.col
+      .flex.flex-center.flex-content-end.col.pr-0
         .r-btn-box
           i.iconfont.icon-sousuo
           span.pl-5 帮我找货

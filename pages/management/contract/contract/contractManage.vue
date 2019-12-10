@@ -1,6 +1,7 @@
 <template lang="pug">
 div
-  .zhd-tishi.text-red
+  Search
+  .mt-20.text-red.zhd-tishi
     i.iconfont.icon-tishi
     span.pl-5 请在合同支付后 5 天内提货，如出现多次延时提货，平台将酌情收取仓储费用！
   .mt-15
@@ -8,7 +9,6 @@ div
       template(slot="title", slot-scope="item")
         .flex.flex-center.flex-content-between
           .col.p-0.flex.flex-center
-            //- b-form-checkbox(v-model="item.selected", label="")
             span.pr-5 合同号:
             img(src="@/assets/images/ding.png", width="18px", height="18px")
             router-link.pl-5.ft-bold.zhd-text-main(to="/") DD19112400011
@@ -16,8 +16,6 @@ div
             span.text-red.ft-bold ￥6233.04
             span.text-999.ft-12 （预计1.584吨，实发1.584吨，含吊费：39.6）
           .ft-12.text-999.text-right
-            button.zhd-btn.zhd-btn-border.zhd-btn-border-warning.zhd-btn-xs.mr-10 申请修改
-            button.zhd-btn.zhd-btn-border.zhd-btn-border-danger.zhd-btn-xs.mr-10.event-cancel 取消合同
             span 下单时间：2019-11-24 09:08
       template(slot="documentNo")
         .text-left
@@ -27,12 +25,9 @@ div
         .text-red.ft-bold 待支付
         .ft-bold 00:00:00
         .ft-12.text-999 支付倒计时
-        //- .text-center.text-success.ft-bold(style="width:79px") {{item.data.status}}
       template(slot="options", slot-scope="item")
         .text-center.pb-5(style="width:88px")
-          //- router-link.zhd-btn.zhd-btn-default.zhd-btn-sm.zhd-btn-abs.mt-5(:to="btn.path", v-for="(btn, index) in item.data.options", :key="index") {{btn.label}}
-          .zhd-btn.zhd-btn-blue.zhd-btn-sm.zhd-btn-abs.mt-5 去支付
-          .zhd-btn.zhd-btn-default.zhd-btn-sm.zhd-btn-abs.mt-5 合同详情
+          router-link.zhd-btn.zhd-btn-default.zhd-btn-sm.zhd-btn-abs.mt-5(:to="btn.path", v-for="(btn, index) in item.data.options", :key="index") {{btn.label}}
       template(slot="footer")
         .flex.flex-content-between.mt-15.pl-10
           b-form-checkbox(:checked="selected.length === tableValue.tableData.length", @change="selectAllRows")
@@ -48,14 +43,16 @@ div
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
+import Search from './search.vue'
 import UniteTable from '@/components/UniteTable.vue'
 
 @Component({
   components: {
+    Search,
     UniteTable
   }
 })
-class ContractPayment extends Vue {
+class ContractManage extends Vue {
   allSelected: boolean = false
   selected: Array<any> = []
   tableValue: any = {
@@ -85,10 +82,7 @@ class ContractPayment extends Vue {
         title: '合同号: DD19112400011',
         status: '已完成',
         check: false,
-        options: [
-          { label: '合同详情', path: '/management/contract/detail' },
-          { label: '去支付', path: '/management/contract/detail' }
-        ],
+        options: [{ label: '合同详情', path: '/management/contract/detail' }],
         list: [{ documentNo: 'ssssss', price: '111', warehouse: 'aaa' }]
       },
       {
@@ -131,6 +125,6 @@ class ContractPayment extends Vue {
     val ? uniteTable.selectAllRows() : uniteTable.clearSelected()
   }
 }
-export default ContractPayment
+export default ContractManage
 </script>
 <style lang="stylus" scoped></style>

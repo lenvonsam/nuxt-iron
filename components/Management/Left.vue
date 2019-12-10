@@ -25,19 +25,15 @@ class Left extends Vue {
     if (this.$route.path === menu.path) {
       className = 'active'
       this.activeMenu = menu
-      this.$emit('jumpUrl', menu)
+      // this.$emit('jumpUrl', menu)
     }
     return className
   }
 
-  // mounted() {
-  //   this.$emit('jumpUrl', )
-  // }
-
-  @Emit('jumpUrl')
+  // @Emit('jumpUrl')
   jumpUrl(menu: any) {
     this.$router.push(menu.path)
-    return menu
+    // return menu
   }
 }
 export default Left

@@ -22,8 +22,8 @@
     template(v-slot:cell(documentNo) = "data")
       router-link.zhd-text-main(to="/") {{data.value}}
     template(v-slot:cell(option)="data")
-      .text-right
-        b-button.zhd-btn.bg-success.zhd-btn-sm(@click.stop="") 待售票
+      slot(name="option", :data="data")
+          //- b-button.zhd-btn.bg-success.zhd-btn-sm(@click.stop="") 待售票
   .mt-10.flex.flex-content-between.flex-center.pl-15
     slot(name="footer")
   pagination.mt-15(:count="options.count", @changePage="getActivePage", v-if="options.pagination")

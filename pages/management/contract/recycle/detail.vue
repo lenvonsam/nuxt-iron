@@ -1,14 +1,12 @@
 <template lang="pug">
-div 1111
+
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
 
-@Component({
-  layout: 'Management'
-})
-class Index extends Vue {}
-export default Index
+@Component
+class Detail extends Vue {}
+export default Detail
 </script>
 <style scoped>
 </style>

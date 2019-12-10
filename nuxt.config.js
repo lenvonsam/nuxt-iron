@@ -17,7 +17,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_651366_chsjhvojtwf.css' }
+      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_651366_iix819713cc.css' }
     ]
   },
 
@@ -39,6 +39,7 @@ module.exports = {
   */
   plugins: [
     '~/plugins/mixins',
+    { src: '~/plugins/compents.js', ssr: false },
     { src: '~/plugins/swiper.js', ssr: false }
     // { src: "~/plugins/picZoom.js", ssr: false }
     // { src: "~/plugins/echarts.js", ssr: false }
@@ -52,6 +53,7 @@ module.exports = {
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
+    'vue-ctk-date-time-picker/nuxt',
     '@nuxtjs/pwa'
   ],
   /*

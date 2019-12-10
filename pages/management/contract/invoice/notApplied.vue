@@ -1,23 +1,26 @@
 <template lang="pug">
 div
-  .prompt.text-red.zhd-tishi
+  Search
+  .mt-20.text-red.zhd-tishi
     i.iconfont.icon-tishi
-    span.pl-5 请联系司机去平台仓库进行提货，平台将为您制作提单！收到确认短信后，请进行提单确认操作！
+    span.pl-5 *月末至月初为开票高峰期，票务如有延迟，敬请谅解
   .mt-15
-    BasicTable.text-center(:options="tableValue", @onRowSelected="rowSelected", ref="basicTable")
-      template(slot="option")
-        b-button.zhd-btn.bg-success.zhd-btn-sm(@click.stop="") 待收票
+    z-basic-table.text-center(:options="tableValue", @onRowSelected="rowSelected", ref="basicTable")
+      template(slot="footer")
+        b-form-checkbox(v-model="allSelected", @change="allSelectedEvent")
+        .text-right
+          button.zhd-btn 批量申请
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
-import BasicTable from '@/components/BasicTable.vue'
+import Search from './search.vue'
 
 @Component({
   components: {
-    BasicTable
+    Search
   }
 })
-class ContractPending extends Vue {
+class NotApplied extends Vue {
   allSelected: boolean = false
   tableValue: any = {
     selectMode: 'multi',
@@ -36,12 +39,6 @@ class ContractPending extends Vue {
     tableData: []
   }
 
-  mounted() {
-    this.$nextTick(() => {
-      this.$emit('count', this.tableValue.count)
-    })
-  }
-
   rowSelected(row: Array<any>) {
     console.log('rowSelected', row)
   }
@@ -51,6 +48,6 @@ class ContractPending extends Vue {
     val ? basicTable.selectAllRows() : basicTable.clearSelected()
   }
 }
-export default ContractPending
+export default NotApplied
 </script>
 <style lang="stylus" scoped></style>

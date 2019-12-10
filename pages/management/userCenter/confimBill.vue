@@ -1,6 +1,8 @@
 <template lang="pug">
 .mt-15
   BasicTable.text-center(:options="tableValue", @onRowSelected="rowSelected", ref="basicTable")
+    template(slot="option")
+      b-button.zhd-btn.bg-success.zhd-btn-sm(@click.stop="") 待收票
     template(slot="footer")
       b-form-checkbox(v-model="allSelected", label="全选", @change="allSelectedEvent")
       .text-right.pr-10
@@ -8,7 +10,7 @@
         button.ml-10.zhd-btn 批量确认
 </template>
 <script lang='ts'>
-import { Component, Vue, Emit } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import BasicTable from '@/components/BasicTable.vue'
 
 @Component({

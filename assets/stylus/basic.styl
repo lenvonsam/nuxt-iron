@@ -77,6 +77,8 @@ for num in (0 .. count)
   align-items center
 .flex-end
   align-items flex-end
+.flex-stretch
+  align-items stretch
 .flex-content-end
   justify-content flex-end
 .flex-content-center
@@ -85,6 +87,8 @@ for num in (0 .. count)
   justify-content space-between
 .flex-content-around
   justify-content space-around
+.flex-nowrap
+  flex-wrap nowrap
 .flex-column
   flex-direction column
 .flex-88
@@ -124,7 +128,7 @@ input.placeholder-white::-webkit-input-placeholder
 .inline
   display inline-block
 .relative-position
-  position relative
+  position relative !important
 .scroll
   overflow auto
   -webkit-overflow-scrolling touch

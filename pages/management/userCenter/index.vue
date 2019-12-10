@@ -33,7 +33,7 @@ div
           span 提单确认
           span(:class="billCount > 0 ? 'text-red' : ''") ({{billCount}})
         ConfimBill(@count="count => { billCount = count }")
-      b-tab(title="申请发票(0)")
+      b-tab
         template(v-slot:title)
           span 申请发票
           span(:class="invoiceCount > 0 ? 'text-red' : ''") ({{invoiceCount}})
@@ -63,11 +63,12 @@ import ApplyInvoice from './applyInvoice.vue'
   layout: 'Management'
 })
 class Index extends Vue {
-  tabIndex: number = 1
+  tabIndex: number = 0
   billCount: number = 0
   receiptCount: number = 0
   pendingCount: number = 0
   invoiceCount: number = 0
+  paymentCount: number = 0
 }
 export default Index
 </script>
@@ -87,28 +88,14 @@ export default Index
     text-indent 10px
     border-left 3px solid #0289fb
     font-size 16px
-  .tab-title
-    padding 0 20px
-    font-size 16px
-    cursor pointer
-    color #333
-    &.active
-      color #0289fb
-      border-bottom 2px solid #0289fb
-  /deep/.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus
-    border 2px solid transparent
-  /deep/.nav-tabs .nav-link
-    border 2px solid transparent
-    font-size 16px
-    padding 0 20px
-    height 52px
-    line-height 50px
-  /deep/.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link
-    color #0289fb
-    border 2px solid transparent
-    border-bottom 2px solid #0289fb
-  /deep/.nav-tabs a
-    color #333
+  // .tab-title
+  // padding 0 20px
+  // font-size 16px
+  // cursor pointer
+  // color #333
+  // &.active
+  // color #0289fb
+  // border-bottom 2px solid #0289fb
   .prompt
     background #fef7e7
     padding 5px

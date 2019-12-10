@@ -1,10 +1,11 @@
 <template lang="pug">
-section
-  Head
-  b-container.p-0(:fluid="true")
-    //- nuxt
-    router-view
-  Footer
+no-ssr
+  section
+    Head
+    b-container.p-0(:fluid="true")
+      //- nuxt
+      router-view
+    Footer
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'

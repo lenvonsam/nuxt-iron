@@ -47,7 +47,7 @@
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
-import CharfirstPinyin from './CharfirstPinyin'
+import CharfirstPinyin from './charfirstPinyin'
 const cityData = require('./city.json')
 const CharfirstPinyinFun = new CharfirstPinyin()
 

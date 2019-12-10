@@ -47,7 +47,7 @@
           b-form-radio(v-model="data.item.metering" checked value="理计") 理计 {{data.value}}
           b-form-radio(v-model="data.item.metering" checked value="磅计") 磅计 {{data.value}}
       template.num-input(v-slot:cell(num)="data")
-        InputNumber(@add="inputNumberAdd(data)", @reduce="inputNumberReduce(data)", :value="data.value")
+        z-input-num(@add="inputNumberAdd(data)", @reduce="inputNumberReduce(data)", :value="data.value")
       template(v-slot:cell(option)="data")
         b-button.ft-13.zhd-btn-sm.zhd-btn-abs(variant="danger")
           i.iconfont.icon-cart
@@ -55,13 +55,8 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator'
-import InputNumber from '@/components/InputNum.vue'
 
-@Component({
-  components: {
-    InputNumber
-  }
-})
+@Component
 class MainList extends Vue {
   isLike: boolean = false
   tableVariants: Array<string> = ['全部', '常州']

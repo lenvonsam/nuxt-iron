@@ -28,7 +28,7 @@
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
-import CharfirstPinyin from '@/components/SelectArea/CharfirstPinyin'
+import CharfirstPinyin from '@/components/SelectArea/charfirstPinyin'
 const goodsData = require('./goods.json')
 const CharfirstPinyinFun = new CharfirstPinyin()
 
