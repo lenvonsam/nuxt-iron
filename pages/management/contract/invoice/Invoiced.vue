@@ -7,11 +7,49 @@ div
   .mt-15
     z-basic-table.text-center(:options="tableValue", @onRowSelected="rowSelected", ref="basicTable")
       template(slot="option")
-        b-button.zhd-btn.bg-success.zhd-btn-sm(@click.stop="") 已收票
+        b-button.zhd-btn.bg-success.zhd-btn-sm(@click.stop="promptStatus = true") 已收票
       template(slot="footer")
         b-form-checkbox(v-model="allSelected", @change="allSelectedEvent")
         .text-right
           button.zhd-btn 批量确认
+  z-dialog-prompt(:options="dialogOptions", :status="promptStatus", @close="promptStatus = false", @back="promptCancel")
+    template(slot="content")
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 提单编号:
+        b-col(cols="9") TD19120500008
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 抬头:
+        b-col(cols="9") 上海和济钢铁有限公司
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 类型:
+        b-col(cols="9") 明细
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 货款金额:
+        b-col(cols="9") 1081.08元
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 吊费:
+        b-col(cols="9") 7.15元
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 总金额:
+        b-col(cols="9") 1088.23元
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 领票方式:
+        b-col(cols="9") 快递邮寄
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 收件人:
+        b-col(cols="9") 范小红
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 手机号:
+        b-col(cols="9") 13775710918
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 快递单号:
+        b-col(cols="9") 2017.11.25
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 快递名称:
+        b-col(cols="9") 顺丰快递
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 收票地址:
+        b-col(cols="9") 江苏 泰州 靖江市 禧百环液化气站对面
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
@@ -24,6 +62,16 @@ import Search from './search.vue'
 })
 class Invoiced extends Vue {
   allSelected: boolean = false
+  dialogOptions: any = {
+    btns: [
+      {
+        label: '确认',
+        class: 'zhd-btn-blue'
+      }
+    ]
+  }
+
+  promptStatus: boolean = false
   tableValue: any = {
     selectMode: 'multi',
     selectable: true,
@@ -77,6 +125,11 @@ class Invoiced extends Vue {
   allSelectedEvent(val: boolean) {
     const basicTable: any = this.$refs.basicTable
     val ? basicTable.selectAllRows() : basicTable.clearSelected()
+  }
+
+  promptCancel(res: any) {
+    console.log('----promptCancel', res)
+    this.promptStatus = false
   }
 }
 export default Invoiced

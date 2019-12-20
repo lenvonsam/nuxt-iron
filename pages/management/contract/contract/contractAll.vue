@@ -54,21 +54,27 @@ class ContractAll extends Vue {
     ],
     tableData: [
       {
-        title: '合同号: DD19112400011',
+        header: true,
         status: '已完成',
-        options: [{ label: '合同详情', path: '/management/contract/detail' }],
+        options: [
+          { label: '合同详情', path: '/management/contract/contract/detail' }
+        ],
         list: [{ documentNo: 'ssssss' }]
       },
       {
-        title: '合同号: DD19112400011',
+        header: true,
         status: '已完成',
-        options: [{ label: '合同详情', path: '/management/contract/detail' }],
+        options: [
+          { label: '合同详情', path: '/management/contract/contract/detail' }
+        ],
         list: [{ documentNo: 'ssssss' }, { documentNo: 'ssssss' }]
       },
       {
-        title: '合同号: DD19112400011',
+        header: true,
         status: '已完成',
-        options: [{ label: '合同详情', path: '/management/contract/detail' }],
+        options: [
+          { label: '合同详情', path: '/management/contract/contract/detail' }
+        ],
         list: [
           { documentNo: 'ssssss' },
           { documentNo: 'ssssss' },

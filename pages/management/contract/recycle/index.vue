@@ -1,25 +1,53 @@
 <template lang="pug">
 div
-  MenuTitle(title="发票管理")
+  MenuTitle(title="合同回收站")
   .mt-10.bg-white.p-15.main-content
     Search
-    z-basic-table.mt-15.text-center(:options="tableValue", @onRowSelected="rowSelected", ref="basicTable")
+    z-basic-table.mt-15.text-center(:options="tableValue", ref="basicTable")
+      template(v-slot:dataTest)
+        span {{dataTest('123')}}
       template(slot="option")
-        b-button.zhd-btn.bg-success.zhd-btn-sm(@click.stop="") 恢复
+        b-button.zhd-btn.bg-success.zhd-btn-sm(@click.stop="restoreBtn") 恢复
+    //- span(v-for="i in 9", :key="i") {{i}}
+  z-dialog-prompt(:options="dialogOptions", :status="promptStatus", @close="promptStatus = false", @back="promptCancel")
+    template(slot="content")
+      Detail
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
 import Search from './search.vue'
+import Detail from './detail.vue'
 import MenuTitle from '@/components/Management/MenuTitle.vue'
 
 @Component({
   layout: 'Management',
   components: {
     MenuTitle,
-    Search
+    Search,
+    Detail
   }
 })
 class Index extends Vue {
+  dataTest: Function = function(a: any) {
+    console.log('aaaa', a)
+  }
+
+  dialogOptions: any = {
+    className: 'dialog-width-1200',
+    title: '恢复合同',
+    btns: [
+      {
+        label: '生成合同',
+        class: 'zhd-btn-blue'
+      },
+      {
+        label: '关闭',
+        class: 'zhd-btn-default'
+      }
+    ]
+  }
+
+  promptStatus: boolean = false
   tableValue: any = {
     pagination: true,
     count: 0,
@@ -62,6 +90,16 @@ class Index extends Vue {
         invoiceNum: '31165.2元'
       }
     ]
+  }
+
+  restoreBtn() {
+    console.log('----------------a')
+    this.promptStatus = true
+  }
+
+  promptCancel(res: any) {
+    console.log('----promptCancel', res)
+    this.promptStatus = false
   }
 }
 export default Index

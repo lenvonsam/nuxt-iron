@@ -4,11 +4,11 @@
     .tool-list.reload.page-box(@click="reload")
       i.iconfont.icon-shuaxin.ft-12
     .tool-list.per-start.page-box(@click="perStartPage", v-if="active > 3") «
-    .tool-list.per.page-box(@click="perPage", v-if="active > 3") ‹
+    .tool-list.per.page-box(@click="perPage", v-if="active > 1") ‹
     .page-list.flex.flex-center
       .list(v-for="p in showPage", :key="p", :class="p === active ? 'active' : ''", @click="selectPage(p)") {{p}}
     .tool-list.nex.page-box(@click="nextPage", v-if="active < countPage") ›
-    .tool-list.nex-end.page-box(@click="nextStartPage", v-if="active < countPage") »
+    .tool-list.nex-end.page-box(@click="nextStartPage", v-if="active < countPage && countPage > 5") »
     .tool-list.count-page.page-box 共{{countPage}}页
     .tool-list.count.page-box 共{{count}}条记录
 </template>
@@ -34,7 +34,10 @@ class Pagination extends Vue {
   get showPage(): Array<number> {
     const showPageCount: number = 5
     let pageList: Array<number> = []
-    if (this.countPage === 0) {
+    if (this.countPage <= 5) {
+      for (let i = 0; i < this.countPage; i++) {
+        pageList.push(i + 1)
+      }
       return pageList
     }
     if (this.active <= 3) {

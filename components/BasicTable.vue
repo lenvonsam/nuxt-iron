@@ -1,5 +1,5 @@
 <template lang="pug">
-.basic-table
+.basic-table  
   b-table(
     ref="basicTable",
     show-empty,
@@ -19,11 +19,11 @@
         .mt-10 暂无记录
     template(v-slot:cell(selected) = "{ rowSelected }")
       b-form-checkbox(v-model="rowSelected", label="")
-    template(v-slot:cell(documentNo) = "data")
+    //- template(v-slot:cell(documentNo) = "data")
       router-link.zhd-text-main(to="/") {{data.value}}
-    template(v-slot:cell(option)="data")
-      slot(name="option", :data="data")
-          //- b-button.zhd-btn.bg-success.zhd-btn-sm(@click.stop="") 待售票
+    template(v-slot:cell()='data')
+      slot(:name='slotName(data)', :data='data')
+        span {{data.value}}
   .mt-10.flex.flex-content-between.flex-center.pl-15
     slot(name="footer")
   pagination.mt-15(:count="options.count", @changePage="getActivePage", v-if="options.pagination")
@@ -49,13 +49,18 @@ class BasicTable extends Vue {
   isBusy: boolean = true
   @Prop(Object) options: options
   selected: Array<any>
+  slotName: Function = function(obj: any) {
+    return obj.field.key
+  }
 
   @Emit()
   onRowSelected(items: any) {
     console.log('onRowSelected', items)
     this.selected = items
   }
-
+  testCell(obj: any) {
+    console.log('test cell', obj)
+  }
   selectAllRows() {
     const basicTable: any = this.$refs.basicTable
     basicTable.selectAllRows()

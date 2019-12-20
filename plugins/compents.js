@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import TextPrompt from '@/components/Prompt/TextPrompt.vue'
+import DialogPrompt from '@/components/Prompt/DialogPrompt.vue'
 import Input from '@/components/Input/Input.vue'
 import InputNum from '@/components/Input/InputNum.vue'
 import InputRemote from '@/components/Input/InputRemote.vue'
@@ -12,3 +14,5 @@ Vue.component('z-input-remote', InputRemote)
 Vue.component('z-select', Select)
 Vue.component('z-date-picker', DateTimePicker)
 Vue.component('z-basic-table', BasicTable)
+Vue.component('z-text-prompt', TextPrompt)
+Vue.component('z-dialog-prompt', DialogPrompt)

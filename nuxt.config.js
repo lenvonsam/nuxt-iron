@@ -40,7 +40,7 @@ module.exports = {
   plugins: [
     '~/plugins/mixins',
     { src: '~/plugins/compents.js', ssr: false },
-    { src: '~/plugins/swiper.js', ssr: false }
+    { src: '~/plugins/use.js', ssr: false }
     // { src: "~/plugins/picZoom.js", ssr: false }
     // { src: "~/plugins/echarts.js", ssr: false }
   ],
@@ -75,8 +75,6 @@ module.exports = {
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
-          // test: /\.(js|vue)$/,
-          // test: /\.js$/,
           loader: 'eslint-loader',
           test: /\.ts$/,
           exclude: /(node_modules)/,

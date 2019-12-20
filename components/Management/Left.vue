@@ -11,7 +11,7 @@
     .menu-list(@click="jumpUrl(child)", v-for="(child, index) in item.child", :key="index", :class="menuActive(child)") {{child.title}}
 </template>
 <script lang='ts'>
-import { Component, Vue, Emit } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { mapState } from 'vuex'
 
 @Component({
@@ -32,7 +32,9 @@ class Left extends Vue {
 
   // @Emit('jumpUrl')
   jumpUrl(menu: any) {
+    console.log('path', menu.path)
     this.$router.push(menu.path)
+    // this.$router.push('/management/contract/pay')
     // return menu
   }
 }

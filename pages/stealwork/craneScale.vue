@@ -13,7 +13,7 @@
           .text-666.ft-16.mt-10 物资重量准
         .card.bg-white.img-shadow.animated.fadeInDown
           img(src="@/assets/images/dc-icon3.png", width="154px", height="154px")
-          .ft-30.pt-10.pb-10.text-gray.ft-bold 稳
+          .ft-30.pt-10.pb-10.text-grey.ft-bold 稳
           .text-666.ft-16.mt-10 数据传输稳
   b-container.pt-50.bg-white(:fluid="true")
     b-row.content.pt-100.pb-30.flex-content-between

@@ -7,7 +7,30 @@ div
   .mt-15
     z-basic-table.text-center(:options="tableValue", @onRowSelected="rowSelected", ref="basicTable")
       template(slot="option")
-        b-button.zhd-btn.bg-success.zhd-btn-sm(@click.stop="") 详情
+        b-button.zhd-btn.bg-success.zhd-btn-sm(@click.stop="invoiceDetail") 详情
+  z-dialog-prompt(:options="dialogOptions", :status="promptStatus", @close="promptStatus = false", @back="promptCancel")
+    template(slot="content")
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 提单编号:
+        b-col(cols="9") TD19120500008
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 抬头:
+        b-col(cols="9") 上海和济钢铁有限公司
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 类型:
+        b-col(cols="9") 明细
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 货款金额:
+        b-col(cols="9") 1081.08元
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 吊费:
+        b-col(cols="9") 7.15元
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 总金额:
+        b-col(cols="9") 1088.23元
+      b-row.mb-15
+        b-col.pr-0.text-right(cols="3") 领票方式:
+        b-col(cols="9") 线下领票
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
@@ -20,6 +43,16 @@ import Search from './search.vue'
 })
 class AlreadyApplied extends Vue {
   allSelected: boolean = false
+  dialogOptions: any = {
+    btns: [
+      {
+        label: '确认',
+        class: 'zhd-btn-blue'
+      }
+    ]
+  }
+
+  promptStatus: boolean = false
   tableValue: any = {
     pagination: true,
     count: 0,
@@ -71,6 +104,15 @@ class AlreadyApplied extends Vue {
   allSelectedEvent(val: boolean) {
     const basicTable: any = this.$refs.basicTable
     val ? basicTable.selectAllRows() : basicTable.clearSelected()
+  }
+
+  invoiceDetail() {
+    this.promptStatus = true
+  }
+
+  promptCancel(res: any) {
+    console.log('----promptCancel', res)
+    this.promptStatus = false
   }
 }
 export default AlreadyApplied

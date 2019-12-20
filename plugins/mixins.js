@@ -28,6 +28,50 @@ const minixs = {
   computed: {},
   watch: {},
   methods: {
+    msgShow ({ title, msg, okVariant = 'primary' }) {
+      this.$bvModal.msgBoxOk(msg, {
+        title: title,
+        size: 'sm',
+        buttonSize: 'sm',
+        okVariant: okVariant,
+        headerClass: 'p-2 border-bottom-0',
+        footerClass: 'p-2 border-top-0',
+        centered: true
+      })
+        .then(value => {
+          console.log('value', value)
+          // this.boxTwo = value
+        })
+        .catch(err => {
+          console.log('err', err)
+          // An error occurred
+        })
+    },
+    confirmShow ({ title = '提示信息', msg, okVariant = 'primary', okTitle = '确认', cancelTitle = '取消', success = () => { }, cancel = () => { } }) {
+      this.$bvModal.msgBoxConfirm(msg, {
+        title: title,
+        size: 'sm',
+        buttonSize: 'sm',
+        okVariant: okVariant,
+        okTitle: okTitle,
+        cancelTitle: cancelTitle,
+        headerClass: 'p-2 border-bottom-0',
+        footerClass: 'p-2 border-top-0',
+        hideHeaderClose: false,
+        centered: true
+      }).then(value => {
+        console.log('value', value)
+        if (value) {
+          success()
+        } else {
+          cancel()
+        }
+        return value
+      }).catch(err => {
+        console.log('err', err)
+        // An error occurred
+      })
+    },
     isIE () {
       const userAgent = navigator.userAgent
       const isIE = userAgent.indexOf('compatible') > -1 && userAgent.indexOf('MSIE') > -1 // 判断是否IE<11浏览器

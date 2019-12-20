@@ -56,6 +56,7 @@ class ContractManage extends Vue {
   allSelected: boolean = false
   selected: Array<any> = []
   tableValue: any = {
+    header: true,
     pagination: true,
     selectable: true,
     count: 150,
@@ -79,27 +80,34 @@ class ContractManage extends Vue {
     ],
     tableData: [
       {
-        title: '合同号: DD19112400011',
+        header: true,
         status: '已完成',
         check: false,
-        options: [{ label: '合同详情', path: '/management/contract/detail' }],
+        options: [
+          { label: '合同详情', path: '/management/contract/contract/detail' }
+        ],
         list: [{ documentNo: 'ssssss', price: '111', warehouse: 'aaa' }]
       },
       {
-        title: '合同号: DD19112400012',
+        header: true,
         status: '已完成',
         check: false,
-        options: [{ label: '合同详情', path: '/management/contract/detail' }],
+        options: [
+          { label: '合同详情', path: '/management/contract/contract/detail' }
+          // { label: '合同修改', path: '/management/contract/contract/edit' }
+        ],
         list: [
           { documentNo: 'ssssss', price: '111', warehouse: 'aaa' },
           { documentNo: 'ssssss', price: '111', warehouse: 'aaa' }
         ]
       },
       {
-        title: '合同号: DD19112400013',
+        header: true,
         status: '已完成',
         check: false,
-        options: [{ label: '合同详情', path: '/management/contract/detail' }],
+        options: [
+          { label: '合同详情', path: '/management/contract/contract/detail' }
+        ],
         list: [
           { documentNo: 'ssssss', price: '111', warehouse: 'aaa' },
           { documentNo: 'ssssss', price: '111', warehouse: 'aaa' },

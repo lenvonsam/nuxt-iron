@@ -16,8 +16,8 @@ div
             span.text-red.ft-bold ￥6233.04
             span.text-999.ft-12 （预计1.584吨，实发1.584吨，含吊费：39.6）
           .ft-12.text-999.text-right
-            button.zhd-btn.zhd-btn-border.zhd-btn-border-warning.zhd-btn-xs.mr-10 申请修改
-            button.zhd-btn.zhd-btn-border.zhd-btn-border-danger.zhd-btn-xs.mr-10.event-cancel 取消合同
+            button.zhd-btn.zhd-btn-border.zhd-btn-border-warning.zhd-btn-xs.mr-10(@click="jump('/management/contract/contract/edit')") 申请修改
+            button.zhd-btn.zhd-btn-border.zhd-btn-border-danger.zhd-btn-xs.mr-10.event-cancel(@click="cancelContract(item)") 取消合同
             span 下单时间：2019-11-24 09:08
       template(slot="documentNo")
         .text-left
@@ -31,7 +31,7 @@ div
       template(slot="options", slot-scope="item")
         .text-center.pb-5(style="width:88px")
           //- router-link.zhd-btn.zhd-btn-default.zhd-btn-sm.zhd-btn-abs.mt-5(:to="btn.path", v-for="(btn, index) in item.data.options", :key="index") {{btn.label}}
-          .zhd-btn.zhd-btn-blue.zhd-btn-sm.zhd-btn-abs.mt-5 去支付
+          .zhd-btn.zhd-btn-blue.zhd-btn-sm.zhd-btn-abs.mt-5(@click="$router.push('/management/contract/pay')") 去支付
           .zhd-btn.zhd-btn-default.zhd-btn-sm.zhd-btn-abs.mt-5 合同详情
       template(slot="footer")
         .flex.flex-content-between.mt-15.pl-10
@@ -45,6 +45,7 @@ div
                 span 元
               .text-999.ft-12 (含吊费：0元)
             button.ml-10.zhd-btn 批量支付
+  //- z-dialog-prompt(:options="dialogOptions", :status="promptStatus")
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
@@ -56,6 +57,7 @@ import UniteTable from '@/components/UniteTable.vue'
   }
 })
 class ContractPayment extends Vue {
+  promptStatus: boolean = false
   allSelected: boolean = false
   selected: Array<any> = []
   tableValue: any = {
@@ -82,30 +84,34 @@ class ContractPayment extends Vue {
     ],
     tableData: [
       {
-        title: '合同号: DD19112400011',
+        header: true,
         status: '已完成',
         check: false,
         options: [
-          { label: '合同详情', path: '/management/contract/detail' },
-          { label: '去支付', path: '/management/contract/detail' }
+          { label: '合同详情', path: '/management/contract/contract/detail' },
+          { label: '去支付', path: '/management/contract/contract/detail' }
         ],
         list: [{ documentNo: 'ssssss', price: '111', warehouse: 'aaa' }]
       },
       {
-        title: '合同号: DD19112400012',
+        header: true,
         status: '已完成',
         check: false,
-        options: [{ label: '合同详情', path: '/management/contract/detail' }],
+        options: [
+          { label: '合同详情', path: '/management/contract/contract/detail' }
+        ],
         list: [
           { documentNo: 'ssssss', price: '111', warehouse: 'aaa' },
           { documentNo: 'ssssss', price: '111', warehouse: 'aaa' }
         ]
       },
       {
-        title: '合同号: DD19112400013',
+        header: true,
         status: '已完成',
         check: false,
-        options: [{ label: '合同详情', path: '/management/contract/detail' }],
+        options: [
+          { label: '合同详情', path: '/management/contract/contract/detail' }
+        ],
         list: [
           { documentNo: 'ssssss', price: '111', warehouse: 'aaa' },
           { documentNo: 'ssssss', price: '111', warehouse: 'aaa' },
@@ -118,17 +124,31 @@ class ContractPayment extends Vue {
   mounted() {
     this.$nextTick(() => {
       this.$emit('count', this.tableValue.count)
+      this.promptStatus = true
     })
   }
 
   rowSelected(row: Array<any>) {
-    // console.log('rowSelected', row)
     this.selected = row
   }
 
   selectAllRows(val: boolean) {
     const uniteTable: any = this.$refs.uniteTable
     val ? uniteTable.selectAllRows() : uniteTable.clearSelected()
+  }
+
+  cancelContract(data: any) {
+    const me: any = this
+    me.confirmShow({
+      msg: '确定要取消合同吗？',
+      success: () => {
+        console.log('success')
+      },
+      cancel: () => {
+        console.log('cancel')
+      }
+    })
+    console.log('cancelContract', data)
   }
 }
 export default ContractPayment

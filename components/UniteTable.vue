@@ -1,28 +1,28 @@
 <template lang="pug">
 .z-table
   .head.flex
-    .td(v-for="(head, index) in copyOptions.head", :key="index", :class="head.className", :style="{width: head.width ? head.width : '100px'}")
+    .td(v-for="(head, index) in copyOptions.head", :key="index", :class="head.className", :style="{width: head.width ? head.width : initWeidth}")
       template(v-if="copyOptions.selectable && index === 0")
         .text-left.pl-10
           b-form-checkbox(:checked="selected.length === copyOptions.tableData.length", @change="selectAllRowsToggle") {{head.label}}
       template(v-else) 
         span {{head.label}}
-    .td(v-for="(item, index) in copyOptions.slotList", :key="item.key", :style="{width: item.width ? item.width : '100px'}") {{item.label}}    
+    .td(v-for="(item, index) in copyOptions.slotList", :key="item.key", :style="{width: item.width ? item.width : initWeidth}") {{item.label}}    
   .tbody(ref="uniteTableTbody")
     b-form-checkbox-group(v-model="selected")
       .tbody-list(v-for="(item, index) in copyOptions.tableData", :key="index")
-        .title.flex
+        .title.flex(v-if="item.header")
           b-form-checkbox(style="width:17px", :value="item", @change="rowSelectedChange", v-if="copyOptions.selectable")
           .col.p-0
             slot(name="title", :data="item")
         .flex.item-body
           .td
             .tr.item-detail(v-for="(content, index) in item.list", :key="index")
-              .list(v-for="(item, index) in copyOptions.head", :key="index", :style="{width: item.width ? item.width : '100px'}")                
-                slot(:name="item.key", :data="item")
+              .list(v-for="(item, index) in copyOptions.head", :key="index", :style="{width: item.width ? item.width : initWeidth}")
+                slot(:name="item.key", :data="content")
                   span {{content[item.key]}}
           .flex.slot-list(v-for="(itemSlot, index) in copyOptions.slotList", :key="itemSlot.key")
-            .td(:style="{width: itemSlot.width ? itemSlot.width : '100px'}")
+            .td(:style="{width: itemSlot.width ? itemSlot.width : initWeidth}")
               slot(:name="itemSlot.key", :data="item")
   slot(name="footer")        
   pagination.mt-15(:count="copyOptions.count", @changePage="getActivePage", v-if="copyOptions.pagination")         
@@ -48,6 +48,7 @@ class UniteTable extends Vue {
   allSelected: boolean = false
   selected: Array<any> = []
   copyOptions: any = {}
+  initWeidth: string = '0px'
 
   @Watch('selected')
   onSelectedChange(val: Array<any>) {
@@ -58,6 +59,7 @@ class UniteTable extends Vue {
   onTableValueChange(options: any) {
     console.log('tableValue', options)
     this.copyOptions = this.options
+    this.initWeidth = 980 / this.copyOptions.head.length + 'px'
   }
 
   getActivePage(page: number) {

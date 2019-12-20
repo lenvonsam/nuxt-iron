@@ -1,3 +1,3 @@
-export interface loadData { 
+export interface loadData {
   driverIdcard: string
 }

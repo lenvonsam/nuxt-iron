@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  menuTitle(title="合同详情")
+  MenuTitle(title="合同详情")
   .mt-10.bg-white.p-15.main-content
     .flex
       .col 合同号：DD19112400028
@@ -30,6 +30,8 @@ div
         span.zhd-text-main 0 支
         strong.pl-15 实发总重量：
         span.zhd-text-main 0 吨
+
+  //- 支付详情
   .mt-10.bg-white.p-10.line-height-30
     .ft-bold.ft-18
       span.pr-10 支付详情
@@ -47,16 +49,47 @@ div
       span.text-red 0元
     .ft-bold 仓储费：
       span.zhd-text-main 0元
+
+  //- 补款信息
+  //- .mt-10.bg-white.p-10.line-height-30
+    .ft-bold.ft-18 补款信息
+    .border-bottom-line.pb-20.pt-20
+      span.ft-20.ft-bold 需补款：
+        span.text-red ￥ 0 元
+      span.pl-15.text-13 (账户余额：
+      span.text-green 13.79
+      span 元 ，如余额未被其他单据使用，只需补款 元 ）
+    .mt-15.flex
+      .col.p-0
+        .mt-5.line-height-30
+          p.pb-5 合同金额：
+            span.zhd-text-main 132.5元
+          p.pb-5 已支付：
+            span.text-green 1000元
+            span ( 定金支付：
+            span.zhd-text-main 1000元
+            span 定金实发抵扣： 白条支付：
+            span.zhd-text-main 1000元
+            span )
+          p.text-red.ft-12 注：请尽可能一次性出库，如多次出库，会分批补款，定金会抵扣在最后几笔提单中！
+      .col.p-0
+        .flex.flex-center
+          .ft-bold 打款信息
+        .line-height-30
+          p.pb-5 银行账号：
+            span.zhd-text-main 10613501040017200
+          p.pb-5 开户银行：中国农业银行股份有限公司常州九龙支行
+          p.pb-5 开户名称：江苏智恒达型云网络科技有限公司
 </template>
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
-import menuTitle from '@/components/Management/MenuTitle.vue'
+import MenuTitle from '@/components/Management/MenuTitle.vue'
 import UniteTable from '@/components/UniteTable.vue'
 
 @Component({
   layout: 'Management',
   components: {
-    menuTitle,
+    MenuTitle,
     UniteTable
   }
 })
