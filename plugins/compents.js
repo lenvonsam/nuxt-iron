@@ -7,6 +7,7 @@ import InputRemote from '@/components/Input/InputRemote.vue'
 import Select from '@/components/Input/Select.vue'
 import DateTimePicker from '@/Components/DateTime/DateTimePicker.vue'
 import BasicTable from '@/components/BasicTable.vue'
+// import Form from '@/components/Form'
 
 Vue.component('z-input', Input)
 Vue.component('z-input-num', InputNum)
@@ -16,3 +17,4 @@ Vue.component('z-date-picker', DateTimePicker)
 Vue.component('z-basic-table', BasicTable)
 Vue.component('z-text-prompt', TextPrompt)
 Vue.component('z-dialog-prompt', DialogPrompt)
+// Vue.component('z-form', Form)

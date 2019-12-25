@@ -50,7 +50,7 @@ const state = {
     icon: 'icon-wenjian',
     child: [{
       title: '求购发布',
-      path: '/'
+      path: '/management/buy/release'
     }, {
       title: '求购管理',
       path: '/'

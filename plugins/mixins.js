@@ -2,7 +2,7 @@ import Vue from 'vue'
 import toStringDate from 'xe-utils/methods/date/toDateString'
 import axios from 'axios'
 import Qs from 'qs'
-import api from '~/plugins/api'
+import api from '~/api/api'
 
 function serializeformQuery (requestParams) {
   let query = ''
